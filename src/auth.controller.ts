@@ -13,7 +13,7 @@ export const login = (req: Request<{}, {}, LoginInput>, res: Response) => {
     res
       .status(200)
       .cookie("token", "simple-auth-token")
-      .json({ message: "로그인 성공함" });
+      .json({ message: "로그인 성공" });
     return;
   }
 
