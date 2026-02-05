@@ -59,9 +59,13 @@ jobs:
         uses: actions/setup-node@v4 # Node.js 실행 환경을 설치
         with:
           node-version: 18 # 또는 프로젝트에 필요한 Node.js 버전
+          cache: "npm"
 
       - name: Install dependencies
-        run: npm install # 프로젝트 의존성 설치
+        run: npm ci # 프로젝트 의존성 설치
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
 
       - name: Apply DB Schema
         run: npm run prisma:migrate # Prisma 마이그레이션 적용 (testdb에 스키마 반영)
